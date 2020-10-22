@@ -38,5 +38,9 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle.kts" }}
 
-      - run: gradle assemble
+      - run: gradle linkDebugExecutableNative
+      
+      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
+          path: build/bin/native/releaseExecutable/
+          destination: release
 
