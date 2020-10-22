@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/openjdk:8-jdk-buster
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -37,6 +37,8 @@ jobs:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle.kts" }}
+
+      - run: apt-get install libncurses5
 
       - run: gradle --stacktrace linkReleaseExecutableNative
       
