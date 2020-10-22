@@ -38,8 +38,6 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle.kts" }}
 
-      - run: apt-get install libncurses5
-
       - run: gradle --stacktrace linkReleaseExecutableNative
       
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
