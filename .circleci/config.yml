@@ -31,14 +31,14 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: gradle dependencies
+      - run: ./gradlew dependencies
 
       - save_cache:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle.kts" }}
 
-      - run: gradle --stacktrace linkReleaseExecutableNative
+      - run: ./gradlew --stacktrace linkReleaseExecutableNative
       
       - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
           path: build/bin/native/releaseExecutable/
